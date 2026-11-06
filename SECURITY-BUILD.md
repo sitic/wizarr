@@ -15,7 +15,7 @@ shared tags are published.
 Images are published to `ghcr.io/sitic/wizarr` with tags `latest`,
 `brotli-fixed`, and `sha-<full-source-commit>`. Deploy the source-specific tag
 or manifest digest to avoid silently changing the deployed build. The image
-sets `APP_VERSION=2026.10.1-brotli-fix` and records its source revision in OCI
+sets `APP_VERSION=2026.10.1+sitic.brotli1.2.1` and records its source revision in OCI
 labels. The Python dependencies are not re-resolved in this workflow.
 
 Keep existing application data and back it up before deploying. Once an

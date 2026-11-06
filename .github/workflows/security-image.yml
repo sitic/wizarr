@@ -36,11 +36,11 @@ jobs:
           push: true
           platforms: ${{ matrix.platform }}
           tags: ghcr.io/${{ github.repository }}:sha-${{ github.sha }}-${{ matrix.arch }}
-          build-args: APP_VERSION=2026.10.1-brotli-fix
+          build-args: APP_VERSION=2026.10.1+sitic.brotli1.2.1
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
-            org.opencontainers.image.version=2026.10.1-brotli-fix
+            org.opencontainers.image.version=2026.10.1+sitic.brotli1.2.1
 
   publish:
     needs: build
