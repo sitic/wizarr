@@ -57,7 +57,7 @@ ENV HOST=0.0.0.0
 ENV PORT=5690
 
 # Install runtime dependencies only
-RUN apk add --no-cache curl tzdata su-exec
+RUN apk add --no-cache curl tzdata su-exec 'brotli-libs>=1.2.1-r0'
 
 # Set application working directory
 WORKDIR /app
@@ -79,6 +79,10 @@ RUN mkdir -p /.cache
 
 ARG APP_VERSION=dev
 ENV APP_VERSION=${APP_VERSION}
+
+# Verify the locked environment and the native decoder before publishing.
+RUN uv lock --check \
+    && uv run --frozen --no-dev python scripts/verify_brotli.py
 
 # Set Flask environment to production
 ENV FLASK_ENV=production
